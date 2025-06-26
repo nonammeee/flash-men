@@ -4,7 +4,7 @@ wait(0.1)
 pcall(function()
     game.StarterGui:SetCore("SendNotification", {
         Title = "منور السكربت يا عسل",
-        Text = "تم تفعيل سكربت المطور فــــلـــــا ش",
+        Text = "المطور كـــريــــم",
         Duration = 5,
     })
 end)
