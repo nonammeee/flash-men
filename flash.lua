@@ -27,8 +27,16 @@ Section1:NewButton("Jeon", "سكربت تخريب قوي", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/joygril/Brookhaven-RP-JG-Hub/refs/heads/main/Jeon-The-Best.txt"))()
 end)
 
-Section1:NewButton("Alfa IRQ", "صناديق وسكنات كاملة", function()
+Section1:NewButton("Alfa IRQ", "من افضل سكربتات عربيه ل بروك هافن", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ALFA5675/alfa99999/refs/heads/main/Protected_9468890821289887.lua.txt"))()
+end)
+
+Section1:NewButton("I2ATT", "سكربت سكنات وفك بان عن المنزل", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-I2att-40410"))()
+end)
+
+Section1:NewButton("Martin-Iraq", "سكربت اغاني و سكنات  و افضل سكربت عربي", function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-MARTIN-IRAQ-31476"))()
 end)
 
 Section1:NewButton("الهلال الرحمة", "بانق ماب البيوت", function()
