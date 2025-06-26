@@ -46,13 +46,49 @@ Section3:NewButton("سكربت الطيران", "تفعيل سكربت الطي�
     loadstring(game:HttpGet("https://raw.githubusercontent.com/nonammeee/flash-fly-V1/main/flash.lua"))()
 end)
 
--- 🔧 تفعيل سحب الواجهة
-task.wait(1)
-for _, v in pairs(game.CoreGui:GetDescendants()) do
-    if v:IsA("Frame") and v.Active and v.Selectable then
-        v.Draggable = true
+-- 💡 خاصية سحب يدوي شغالة على كل Exploits
+local UIS = game:GetService("UserInputService")
+local dragging, dragInput, dragStart, startPos
+
+local function makeDraggable(frame)
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+            dragStart = input.Position
+            startPos = frame.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement then
+            dragInput = input
+        end
+    end)
+
+    UIS.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+                                       startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+end
+
+-- نحاول نلاقي الـ Main Frame تلقائياً ونجعله قابل للسحب
+local FlashUI = game.CoreGui:FindFirstChild("KavoUI")
+if FlashUI then
+    local targetFrame = FlashUI:FindFirstChildOfClass("Frame")
+    if targetFrame then
+        makeDraggable(targetFrame)
     end
 end
+
 
 -- إضافة خاصية السحب للواجهة الرئيسية
 local FlashGui = CoreGui:FindFirstChild("KavoUI")
